@@ -109,7 +109,8 @@
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const token = urlParams.get('token')
-      // const size = urlParams.get('size');
+      const customerId = urlParams.get('customerId');
+      const providerCode = urlParams.get('providerCode');
       var form = document.querySelector('button[type="submit"]');
       var showOtp = document.getElementById("otp-field");
       var hideFields = document.getElementsByClassName("hideOnOtp");
@@ -131,13 +132,13 @@
 
       interswitch.hostedFields.newInstance(
         {
-          authorization:
-            "eyJhbGciOiJSUzI1NiJ9.eyJtZXJjaGFudF9jb2RlIjoiTVgxODciLCJwcm9kdWN0aW9uX3BheW1lbnRfY29kZSI6IjAwMTY0NjM5ODU0IiwicmVxdWVzdG9yX2lkIjoiMDAxMTc2MTQ5OTIiLCJkb21haW5fY29kZSI6Ik9QQVkiLCJlbnYiOiJURVNUIiwicGF5YWJsZV9pZCI6IjIzMjQiLCJjbGllbnRfZGVzY3JpcHRpb24iOm51bGwsImNsaWVudF9pZCI6IklLSUE5NjE0QjgyMDY0RDYzMkU5QjY0MThERjM1OEE2QTRBRUE4NEQ3MjE4IiwiaW5zdGl0dXRpb25faWQiOiIxMTczOSIsImF1ZCI6WyJhcGktZ2F0ZXdheSIsImNhZXNhciIsImNhcmRsZXNzLXNlcnZpY2UiLCJjcmVkaXQtc2NvcmUtc2VydmljZSIsImRpcmVjdC10by1hY2NvdW50IiwiaW5jb2duaXRvIiwiaXN3LWNvbGxlY3Rpb25zIiwiaXN3LWNvcmUiLCJpc3ctbGVuZGluZy1zZXJ2aWNlIiwiaXN3LXBheW1lbnRnYXRld2F5IiwiaXN3LXRyYW5zZmVyLXNlcnZpY2UtY29yZS1taWNyb3NlcnZpY2UiLCJwYXNzcG9ydCIsInBheW1lbnQtc2VydmljZSIsInBheW1lbnRzZXJ2aWNlIiwicHJvamVjdC14LWNvbnN1bWVyIiwicHJvamVjdC14LW1lcmNoYW50IiwicHdtIiwidHJhbnNmZXItc2VydmljZS1jb3JlIiwidHJhbnNmZXItc2VydmljZS1jb3JlLWFkbWluIiwidmF1bHQiLCJ2b3VjaGVyLWFwaSIsIndhbGxldCJdLCJjb3JlX2lkIjoiODE0MSIsInNjb3BlIjpbInByb2ZpbGUiXSwiYXBpX3Jlc291cmNlcyI6WyJyaWQtUE9TVC90cmFuc2ZlcnMvaW5xdWlyaWVzLyoqIiwicmlkLVBPU1QvdHJhbnNmZXJzL2FjY291bnRzLyoqIiwicmlkLVBPU1QvYXBpL3YxL3RyYW5zZmVycy9zZWN1cml0eS8qKiIsInJpZC1QT1NUL2FwaS92MS90cmFuc2ZlcnMvaW5zdGl0dXRpb25zL2Z4LyoqIiwicmlkLVBVVC90cmFuc2ZlcnMvaW5xdWlyaWVzL3VwZGF0ZSIsInJpZC1QVVQvYXBpL3YxL3RyYW5zZmVycy9zZWN1cml0eS8qKiIsInJpZC1QVVQvYXBpL3YxL3RyYW5zZmVycy9pbnN0aXR1dGlvbnMvZngvKioiLCJyaWQtR0VUL3RyYW5zZmVycy9jcmVkaXRzLyoqIiwicmlkLUdFVC90cmFuc2ZlcnMvc2V0dGxlbWVudHMvKioiLCJyaWQtR0VUL3RyYW5zZmVycy90cmFuc2FjdGlvbi8qKiIsInJpZC1HRVQvYXBpL3YxL3RyYW5zZmVycy9zZWN1cml0eS8qKiIsInJpZC1HRVQvYXBpL3YxL3RyYW5zZmVycy9pbnN0aXR1dGlvbnMvZngvKioiLCJyaWQtREVMRVRFL2FwaS92MS90cmFuc2ZlcnMvc2VjdXJpdHkvKioiXSwiZXhwIjoxNjM3MzIyNTkwLCJjbGllbnRfbG9nbyI6bnVsbCwianRpIjoiNmIwMTc0M2UtNDdjYy00NDgxLTgxNTgtZDg1YTI5NTcwOTEyIiwicGF5bWVudF9jb2RlIjoiMDQyNTk0MTMwMjQ2In0.Qh9KR2p2GUN-JVfyORYJR9XeYsQeDajJiMPcyaraVrLQzKLb-ZsOxi3_9lysY557dlFSOPdAnZuVH-DXEPQHnpEe3y9ILvU2K79b45rgx_ZXE536Z2FjMsre8GXFRuRlNPQSvdFTJv6JOwbidK2ZYMfpb7TXxLfmP6-naeDapwJhplVBkiRLvrp3oX-W1uapHA75YnnrDtjkuTiodaHhS6PpHZrFCT26YB9Y1CQgN07WCPoIkCTLU7O1BoLz2V_pGIRR90UehQtYXG0DhG0vBtyK92hznkAxZ2vHLplVbPKkDeOiRN9UnhDfLOE-T4wWRSMzu7toV38pRqE94EAFrg",
+          authorization: token,
           request: {
-            customerId: "2348123456789",
+            // 2348123456789
+            customerId: customerId,
             channelCode: "QTUSSD",
             offerId: "OFFER1637236386100",
-            providerCode: "MKT",
+            providerCode: providerCode,
             transactionRef: "8464646984395451",
             creditMethod: {
               accountNumber: "0724770698",
