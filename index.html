@@ -106,12 +106,16 @@
 
   <script>
     jQuery(document).ready(function () {
+      const queryString = window.location.search;
+      // const size = urlParams.get('size');
       var form = document.querySelector('button[type="submit"]');
       var showOtp = document.getElementById("otp-field");
       var hideFields = document.getElementsByClassName("hideOnOtp");
       var validateCardButton = document.getElementById("validateButton");
       var backButton = document.getElementById("back-button");
       var cardForm = document.getElementById("cardForm");
+
+      console.log(queryString);
 
       backButton.addEventListener("click", function () {
         backControl();
