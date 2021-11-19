@@ -107,6 +107,8 @@
   <script>
     jQuery(document).ready(function () {
       const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const token = urlParams.get('token')
       // const size = urlParams.get('size');
       var form = document.querySelector('button[type="submit"]');
       var showOtp = document.getElementById("otp-field");
