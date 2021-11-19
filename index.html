@@ -111,6 +111,9 @@
       const token = urlParams.get('token')
       const customerId = urlParams.get('customerId');
       const providerCode = urlParams.get('providerCode');
+
+      // var card-pan
+
       var form = document.querySelector('button[type="submit"]');
       var showOtp = document.getElementById("otp-field");
       var hideFields = document.getElementsByClassName("hideOnOtp");
@@ -118,7 +121,7 @@
       var backButton = document.getElementById("back-button");
       var cardForm = document.getElementById("cardForm");
 
-      console.log(token);
+      console.log(cardForm);
 
       backButton.addEventListener("click", function () {
         backControl();
