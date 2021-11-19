@@ -1,0 +1,356 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="css/style1.css" />
+</head>
+
+<body>
+  <form id="cardForm">
+    <div class="panel">
+      <div class="notification-box">
+        <div class="content success">
+        </div>
+      </div>
+      <header class="panel__header">
+        <img src="./img/isw-logo.png" />
+        <p>ILS Hosted Fields Demo Page</p>
+      </header>
+      <div class="panel__content">
+        <div class="textfield--float-label hideOnOtp">
+          <!-- Begin hosted fields section -->
+          <label class="hosted-field--label" for="card-pan">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 24 24">
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path
+                  d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+              </svg>
+            </span>
+            Card Number
+          </label>
+          <div id="card-pan" class="hosted-field"></div>
+          <!-- End hosted fields section -->
+        </div>
+        <div class="textfield--float-label hideOnOtp">
+          <!-- Begin hosted fields section -->
+          <label class="hosted-field--label" for="expiration-date">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 24 24">
+                <path
+                  d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" />
+              </svg>
+            </span>
+            Exp</label>
+          <div id="expiration-date" class="hosted-field"></div>
+          <!-- End hosted fields section -->
+        </div>
+        <div class="textfield--float-label hideOnOtp">
+          <!-- Begin hosted fields section -->
+          <label class="hosted-field--label" for="card-cvv">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 24 24">
+                <path
+                  d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+              </svg>
+            </span>
+            CVV</label>
+          <div id="card-cvv" class="hosted-field"></div>
+          <!-- End hosted fields section -->
+        </div>
+        <div class="textfield--float-label hideOnOtp">
+          <!-- Begin hosted fields section -->
+          <label class="hosted-field--label" for="card-pin">
+            <span class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 24 24">
+                <path
+                  d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+              </svg>
+            </span>
+            Pin</label>
+          <div id="card-pin" class="hosted-field"></div>
+          <!-- End hosted fields section -->
+        </div>
+        <div class="textfield--float-label textfield--hide" id="otp-field" style="width: 100%">
+          <div class="back-control" id="back-button">
+            <span class="back-icon">
+              <svg width="12" height="12" top="0" viewBox="0 0 19 32" xmlns="http://www.w3.org/2000/svg">
+                <title>back</title>
+                <path fill="#5fabdc" d="M5.657 15.556L18.385 2.828 15.555 0 0 15.556l15.556 15.557 2.83-2.83"
+                  fill-rule="evenodd" />
+              </svg>
+            </span>
+            <label>Back</label>
+          </div>
+
+          <!-- Begin hosted fields section -->
+          <label class="hosted-field--label" for="card-otp">
+            Kindly enter the OTP sent to your mobile number
+          </label>
+          <div id="card-otp" class="hosted-field"></div>
+          <!-- End hosted fields section -->
+        </div>
+      </div>
+      <footer class="panel__footer">
+        <button class="pay-button" type="submit" id="validateButton">
+          Submit
+        </button>
+      </footer>
+    </div>
+  </form>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+  <!-- <script src="https://ils-hosted-fields-channels-sandbox.k7.isw.la/build.js"></script> -->
+  <script src="https://ils-hosted-fields-channels.sandbox.interswitchng.com/build.js"></script>
+
+  <script>
+    jQuery(document).ready(function () {
+      var form = document.querySelector('button[type="submit"]');
+      var showOtp = document.getElementById("otp-field");
+      var hideFields = document.getElementsByClassName("hideOnOtp");
+      var validateCardButton = document.getElementById("validateButton");
+      var backButton = document.getElementById("back-button");
+      var cardForm = document.getElementById("cardForm");
+
+      backButton.addEventListener("click", function () {
+        backControl();
+      });
+
+      $("#validateButton").click(function () {
+        if (validateCardButton.innerHTML == "Submit") {
+          validateCardButton.innerHTML = "Loading...";
+        }
+      });
+
+      interswitch.hostedFields.newInstance(
+        {
+          authorization:
+            "eyJhbGciOiJSUzI1NiJ9.eyJtZXJjaGFudF9jb2RlIjoiTVgxODciLCJwcm9kdWN0aW9uX3BheW1lbnRfY29kZSI6IjAwMTY0NjM5ODU0IiwicmVxdWVzdG9yX2lkIjoiMDAxMTc2MTQ5OTIiLCJkb21haW5fY29kZSI6Ik9QQVkiLCJlbnYiOiJURVNUIiwicGF5YWJsZV9pZCI6IjIzMjQiLCJjbGllbnRfZGVzY3JpcHRpb24iOm51bGwsImNsaWVudF9pZCI6IklLSUE5NjE0QjgyMDY0RDYzMkU5QjY0MThERjM1OEE2QTRBRUE4NEQ3MjE4IiwiaW5zdGl0dXRpb25faWQiOiIxMTczOSIsImF1ZCI6WyJhcGktZ2F0ZXdheSIsImNhZXNhciIsImNhcmRsZXNzLXNlcnZpY2UiLCJjcmVkaXQtc2NvcmUtc2VydmljZSIsImRpcmVjdC10by1hY2NvdW50IiwiaW5jb2duaXRvIiwiaXN3LWNvbGxlY3Rpb25zIiwiaXN3LWNvcmUiLCJpc3ctbGVuZGluZy1zZXJ2aWNlIiwiaXN3LXBheW1lbnRnYXRld2F5IiwiaXN3LXRyYW5zZmVyLXNlcnZpY2UtY29yZS1taWNyb3NlcnZpY2UiLCJwYXNzcG9ydCIsInBheW1lbnQtc2VydmljZSIsInBheW1lbnRzZXJ2aWNlIiwicHJvamVjdC14LWNvbnN1bWVyIiwicHJvamVjdC14LW1lcmNoYW50IiwicHdtIiwidHJhbnNmZXItc2VydmljZS1jb3JlIiwidHJhbnNmZXItc2VydmljZS1jb3JlLWFkbWluIiwidmF1bHQiLCJ2b3VjaGVyLWFwaSIsIndhbGxldCJdLCJjb3JlX2lkIjoiODE0MSIsInNjb3BlIjpbInByb2ZpbGUiXSwiYXBpX3Jlc291cmNlcyI6WyJyaWQtUE9TVC90cmFuc2ZlcnMvaW5xdWlyaWVzLyoqIiwicmlkLVBPU1QvdHJhbnNmZXJzL2FjY291bnRzLyoqIiwicmlkLVBPU1QvYXBpL3YxL3RyYW5zZmVycy9zZWN1cml0eS8qKiIsInJpZC1QT1NUL2FwaS92MS90cmFuc2ZlcnMvaW5zdGl0dXRpb25zL2Z4LyoqIiwicmlkLVBVVC90cmFuc2ZlcnMvaW5xdWlyaWVzL3VwZGF0ZSIsInJpZC1QVVQvYXBpL3YxL3RyYW5zZmVycy9zZWN1cml0eS8qKiIsInJpZC1QVVQvYXBpL3YxL3RyYW5zZmVycy9pbnN0aXR1dGlvbnMvZngvKioiLCJyaWQtR0VUL3RyYW5zZmVycy9jcmVkaXRzLyoqIiwicmlkLUdFVC90cmFuc2ZlcnMvc2V0dGxlbWVudHMvKioiLCJyaWQtR0VUL3RyYW5zZmVycy90cmFuc2FjdGlvbi8qKiIsInJpZC1HRVQvYXBpL3YxL3RyYW5zZmVycy9zZWN1cml0eS8qKiIsInJpZC1HRVQvYXBpL3YxL3RyYW5zZmVycy9pbnN0aXR1dGlvbnMvZngvKioiLCJyaWQtREVMRVRFL2FwaS92MS90cmFuc2ZlcnMvc2VjdXJpdHkvKioiXSwiZXhwIjoxNjM3MzIyNTkwLCJjbGllbnRfbG9nbyI6bnVsbCwianRpIjoiNmIwMTc0M2UtNDdjYy00NDgxLTgxNTgtZDg1YTI5NTcwOTEyIiwicGF5bWVudF9jb2RlIjoiMDQyNTk0MTMwMjQ2In0.Qh9KR2p2GUN-JVfyORYJR9XeYsQeDajJiMPcyaraVrLQzKLb-ZsOxi3_9lysY557dlFSOPdAnZuVH-DXEPQHnpEe3y9ILvU2K79b45rgx_ZXE536Z2FjMsre8GXFRuRlNPQSvdFTJv6JOwbidK2ZYMfpb7TXxLfmP6-naeDapwJhplVBkiRLvrp3oX-W1uapHA75YnnrDtjkuTiodaHhS6PpHZrFCT26YB9Y1CQgN07WCPoIkCTLU7O1BoLz2V_pGIRR90UehQtYXG0DhG0vBtyK92hznkAxZ2vHLplVbPKkDeOiRN9UnhDfLOE-T4wWRSMzu7toV38pRqE94EAFrg",
+          request: {
+            customerId: "2348123456789",
+            channelCode: "QTUSSD",
+            offerId: "OFFER1637236386100",
+            providerCode: "MKT",
+            transactionRef: "8464646984395451",
+            creditMethod: {
+              accountNumber: "0724770698",
+              bankCode: "044"
+            }
+          },
+          styles: {
+            input: {
+              "font-size": "14px",
+              "font-family": "roboto, verdana, sans-serif",
+              "font-weight": "lighter",
+              "color": "black",
+              "border-width": "0px"
+            },
+            ":focus": {
+              outline: "none"
+            },
+            ".valid": {
+              color: "black"
+            },
+            ".invalid": {
+              color: "red"
+            }
+          },
+          fields: {
+            pan: {
+              selector: "#card-pan",
+              placeholder: "**** **** **** ****"
+            },
+            cvv: {
+              selector: "#card-cvv",
+              placeholder: "***"
+            },
+            exp: {
+              selector: "#expiration-date",
+              placeholder: "mm/yy"
+            },
+            pin: {
+              selector: "#card-pin",
+              placeholder: "****"
+            },
+            otp: {
+              selector: "#card-otp",
+              placeholder: "******"
+            }
+          },
+          onError: function (error) {
+            showNotificationAlert(error.responseMessage, true);
+          }
+        },
+        function (err, hostedFieldInstance) {
+          if (err) {
+            // something is wrong,
+            return;
+          }
+          function findLabel(field) {
+            return $(
+              '.hosted-field--label[for="' + field.container.id + '"]'
+            );
+          }
+
+          hostedFieldInstance.on("focus", function (event) {
+            var field = event.fields[event.emittedBy];
+
+            findLabel(field)
+              .addClass("label-float")
+              .removeClass("filled");
+          });
+
+          // Emulates floating label pattern
+          hostedFieldInstance.on("blur", function (event) {
+            var field = event.fields[event.emittedBy];
+            var label = findLabel(field);
+
+            if (field.isEmpty) {
+              label.removeClass("label-float");
+            } else if (field.isValid) {
+              label.addClass("filled");
+            } else {
+              label.addClass("invalid");
+            }
+          });
+
+          hostedFieldInstance.on("empty", function (event) {
+            var field = event.fields[event.emittedBy];
+
+            findLabel(field)
+              .removeClass("filled")
+              .removeClass("invalid");
+          });
+
+          hostedFieldInstance.on("validityChange", function (event) {
+            var field = event.fields[event.emittedBy];
+            var label = findLabel(field);
+
+            if (field.isPotentiallyValid) {
+              label.removeClass("invalid");
+            } else {
+              label.addClass("invalid");
+            }
+          });
+
+          form.addEventListener(
+            "click",
+            function (evt) {
+              evt.preventDefault();
+              evt.stopPropagation();
+
+              hostedFieldInstance.submit(function (err, payload) {
+
+                if (err) {
+                  if (err.responseCode === "T0") {
+                    $(hideFields).removeClass("textfield--show");
+                    $(hideFields).addClass("textfield--hide");
+
+                    $(showOtp).removeClass("textfield--hide");
+                    $(showOtp).addClass("textfield--show");
+
+                    $(validateCardButton).addClass("blue");
+
+                    $(validateCardButton).html("Validate");
+
+                    showNotificationAlert(err.message, false);
+                    return;
+                  } else if (err.responseCode !== "T0" && err.responseMessage) {
+                    showNotificationAlert(
+                      "Transaction failed with " + err.responseMessage,
+                      true
+                    );
+                    return;
+                  }
+                  if (err.message.body.errors) {
+                    showNotificationAlert(
+                      "Transction Failed with" +
+                      JSON.stringify(
+                        err.message.body.errors[0]["message"]
+                      ),
+                      true
+                    );
+                    return;
+                  }
+                  else if (err.body.responseCode == "00") {
+                    // alert(payload.body.responseMessage);
+                    showNotificationAlert(
+                      payload.body.responseMessage,
+                      false
+                    );
+                  }
+                  else if (err.message.body) {
+                    if (err.message.body.token) {
+                      showNotificationAlert("Transaction Successful", false);
+                      return;
+                    }
+                  }
+                }
+                else if (payload) {
+                  if (Object.keys(payload.body).length <= 1) {
+                    showNotificationAlert("Transaction Failed", true);
+                  }
+                  if (payload.body.responseCode == "00") {
+                    // alert(payload.body.responseMessage);
+                    showNotificationAlert(
+                      payload.body.responseMessage,
+                      false
+                    );
+                  }
+                  if (payload.body.token) {
+                    showNotificationAlert(
+                      "Card successfully tokenized " + "(" + JSON.stringify(payload.body) + ")",
+                      false
+                    );
+                  }
+
+                  return;
+                }
+
+
+              });
+            },
+            false
+          );
+        }
+      );
+
+      function showNotificationAlert(message, isError) {
+        if (message === undefined) {
+          message = "Error occured loading library, retry with valid credentials.";
+        }
+        var notificationBox = document.querySelector(".notification-box");
+        notificationBox.classList.add("show");
+
+        var notificationContent = notificationBox.querySelector(".content");
+        notificationContent.innerHTML = message;
+
+        notificationContent.classList.remove("error");
+        notificationContent.classList.remove("success");
+
+        notificationContent.classList.add(isError ? "error" : "success");
+
+        setTimeout(function () {
+          notificationBox.classList.remove("show");
+        }, 20000);
+      }
+
+      function backControl() {
+        location.reload();
+
+        $(showOtp).removeClass("textfield--show");
+        $(hideFields).removeClass("textfield--hide");
+
+        $(showOtp).addClass("textfield--hide");
+        $(hideFields).addClass("textfield--show");
+
+        $(validateCardButton).removeClass("blue");
+
+        $(validateCardButton).html("Submit");
+      }
+    });
+  </script>
+</body>
+
+</html>
