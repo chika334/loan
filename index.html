@@ -15,6 +15,9 @@
         <img src="./img/isw-logo.png" />
         <p>ILS Hosted Fields Demo Page</p>
       </header>
+      <!-- <button class="pay-button" type="submit" id="validateButton">
+        Back
+      </button> -->
       <div class="panel__content">
         <div class="textfield--float-label hideOnOtp">
           <!-- Begin hosted fields section -->
@@ -99,9 +102,6 @@
   </form>
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-  <!-- <script src="https://ils-hosted-fields-channels-sandbox.k7.isw.la/build.js"></script> -->
   <script src="//ils-hosted-fields-channels.sandbox.interswitchng.com/build.js"></script>
 
   <script>
@@ -115,8 +115,6 @@
       const accountNumber = urlParams.get('accountNumber')
       const bankCode = urlParams.get('bankDetails')
 
-      // var card-pan
-
       var form = document.querySelector('button[type="submit"]');
       var showOtp = document.getElementById("otp-field");
       var hideFields = document.getElementsByClassName("hideOnOtp");
@@ -129,7 +127,9 @@
           (new Date()).getTime().toString(36);
       }
 
-      // console.log(cardForm);
+      function sendBack(header, message) {
+        window.location.href = `http://localhost:3000/reloadng/loan/loan-status?header=${header}&message=${message}`
+      }
 
       backButton.addEventListener("click", function () {
         backControl();
@@ -275,6 +275,7 @@
                     showNotificationAlert(err.message, false);
                     return;
                   } else if (err.responseCode !== "T0" && err.responseMessage) {
+                    sendBack("Error Message", err.responseMessage)
                     showNotificationAlert(
                       "Transaction failed with " + err.responseMessage,
                       true
@@ -282,6 +283,7 @@
                     return;
                   }
                   if (err.message.body.errors) {
+                    sendBack("Error Message", JSON.stringify(err.message.body.errors[0]["message"]))
                     showNotificationAlert(
                       "Transction Failed with" +
                       JSON.stringify(
@@ -293,13 +295,16 @@
                   }
                   else if (err.body.responseCode == "00") {
                     // alert(payload.body.responseMessage);
+                    sendBack("Success Message", payload.body.responseMessage)
                     showNotificationAlert(
                       payload.body.responseMessage,
                       false
                     );
                   }
                   else if (err.message.body) {
+
                     if (err.message.body.token) {
+                      sendBack("Success Message", err.message.body.token)
                       showNotificationAlert("Transaction Successful", false);
                       return;
                     }
