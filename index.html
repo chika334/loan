@@ -275,7 +275,7 @@
                     showNotificationAlert(err.message, false);
                     return;
                   } else if (err.responseCode !== "T0" && err.responseMessage) {
-                    // sendBack("Error Message", err.responseMessage)
+                    sendBack("Error Message", err.responseMessage)
                     showNotificationAlert(
                       "Transaction failed with " + err.responseMessage,
                       true
@@ -283,7 +283,7 @@
                     return;
                   }
                   if (err.message.body.errors) {
-                    // sendBack("Error Message", JSON.stringify(err.message.body.errors[0]["message"]))
+                    sendBack("Error Message", JSON.stringify(err.message.body.errors[0]["message"]))
                     showNotificationAlert(
                       "Transction Failed with" +
                       JSON.stringify(
@@ -295,7 +295,7 @@
                   }
                   else if (err.body.responseCode == "00") {
                     alert(payload.body.responseMessage);
-                    // sendBack("Success Message", payload.body.responseMessage)
+                    sendBack("Success Message", payload.body.responseMessage)
                     showNotificationAlert(
                       payload.body.responseMessage,
                       false
@@ -304,7 +304,7 @@
                   else if (err.message.body) {
 
                     if (err.message.body.token) {
-                      // sendBack("Success Message", err.message.body.token)
+                      sendBack("Success Message", err.message.body.token)
                       showNotificationAlert("Transaction Successful", false);
                       return;
                     }
@@ -316,8 +316,8 @@
                     showNotificationAlert("Transaction Failed", true);
                   }
                   if (payload.body.responseCode == "00") {
-                    // alert(payload.body.responseMessage);
-                    alert("daniel success")
+                    sendBack("Success Message", payload.body.responseMessage)
+                    // alert("daniel success")
                     showNotificationAlert(
                       payload.body.responseMessage,
                       false
