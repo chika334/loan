@@ -111,6 +111,9 @@
       const token = urlParams.get('token')
       const customerId = urlParams.get('customerId');
       const providerCode = urlParams.get('providerCode');
+      const offerId = urlParams.get('offerId')
+      const accountNumber = urlParams.get('accountNumber')
+      const bankCode = urlParams.get('bankDetails')
 
       // var card-pan
 
@@ -121,7 +124,12 @@
       var backButton = document.getElementById("back-button");
       var cardForm = document.getElementById("cardForm");
 
-      console.log(cardForm);
+      function generateId() { // unique id
+        return Math.random().toString(36).substring(2) +
+          (new Date()).getTime().toString(36);
+      }
+
+      // console.log(cardForm);
 
       backButton.addEventListener("click", function () {
         backControl();
@@ -140,12 +148,12 @@
             // 2348123456789
             customerId: customerId,
             channelCode: "QTUSSD",
-            offerId: "OFFER1637236386100",
+            offerId: offerId,
             providerCode: providerCode,
-            transactionRef: "8464646984395451",
+            transactionRef: generateId(),
             creditMethod: {
-              accountNumber: "0724770698",
-              bankCode: "044"
+              accountNumber: accountNumber,
+              bankCode: bankCode
             }
           },
           styles: {
